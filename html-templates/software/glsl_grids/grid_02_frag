@@ -1,0 +1,57 @@
+precision highp float;
+
+// varying
+varying vec2 uv;
+varying vec2 screenSize;
+
+// colors
+vec3 bgColor = vec3(0.2);
+vec3 gridColor = vec3(0.85);
+
+// camera
+vec2 cameraPos = vec2(0.0);
+float cameraWidth = 2.0;
+vec2 cameraSize = vec2(0.0);
+
+// grid
+vec2 gridCenter = vec2(0.3);
+vec2 gridSize = vec2(1.0);
+vec2 gridCellSize = vec2(0.2);
+vec2 gridCellThickness = vec2(0.08);
+
+void main(void) {
+	// match the camera's aspect ratio to the canvas's
+	float cameraHeight = cameraWidth * screenSize.y / screenSize.x;
+	cameraSize = vec2(cameraWidth, cameraHeight);
+
+	// transform the uv coordinates to the to the camera's coordinates
+	// (cx - cw / 2, cy - ch / 2) to (cx + cw / 2, cy + ch / 2)
+	// now, each point on the screen will the the 'world' coordinate
+	vec2 p = (uv - 0.5) * cameraSize + cameraPos;
+
+	// check if the point is inside the bounds of the grid from each direction
+	vec2 inGridMin = min(vec2(0.0), p - gridCenter - gridSize / 2.0);
+	vec2 inGridMax = max(vec2(0.0), p - gridCenter + gridSize / 2.0);
+
+	// check if the point is inside the grid or not
+	float inGrid =
+		sign(inGridMin.x) * sign(inGridMin.y) *
+		sign(inGridMax.x) * sign(inGridMax.y);
+
+	// get the relative position to the corner of the grid
+	vec2 pRel = p - (gridCenter - gridSize / 2.0);
+
+	// modulate the relative position with twice the cell size and normalize it
+	vec2 pMod = mod(pRel, gridCellSize) / (gridCellSize);
+
+	// checks if the point is near the border of the cell
+	vec2 nearBorderVec = 1.0 - step(gridCellThickness, -abs(pMod - 0.5) + 0.5);
+	float nearBorder = clamp(nearBorderVec.x + nearBorderVec.y, 0.0, 1.0);
+
+	float fill = inGrid * nearBorder;
+
+	// output to screen
+	gl_FragColor =
+		(1.0 - fill) * vec4(vec3(bgColor), 1.0) +
+		fill * vec4(vec3(gridColor), 1.0);
+}

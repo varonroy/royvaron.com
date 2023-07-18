@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css-dist/output.css" rel="stylesheet">
+	<link href="/css-common/styles.css" rel="stylesheet">
+	<title>Roy Varon</title>
+</head>
+
+<body class="relative body-color">
+
+	<div style="z-index: -1;" class="index-bg flex justify-center absolute"></div>
+
+	<!-- <div class="flex justify-center">
+		<div class="mt-10">
+			<div class="font-mono text-8xl">text</div>
+		</div>
+	</div> -->
+
+	<div class="flex h-screen w-screen my-10">
+
+		<div class="m-auto top-1/2 left-1/2">
+
+			<div class="main-page-text-group fade-in-delay">
+				<p class="main-page-title">Roy Varon Weinryb</p>
+				<div class="m-4">
+					<a href="mailto:varonroy@gmail.com" class="main-page-link">varonroy@gmail.com</a>
+				</div>
+				<div class="m-4">
+					<a href="https://github.com/varonroy" class="main-page-link">github</a>
+				</div>
+
+				<div class="m-4">
+					<a href="https://www.linkedin.com/feed/" class="main-page-link">linkedin</a>
+				</div>
+
+				<div class="m-4">
+					<a href="/res/resume.pdf" class="main-page-link">resume</a>
+				</div>
+			</div>
+
+			<div class="flex flex-col lg:flex-row justify-center">
+				{{counter = 200}}
+
+				{{@ panel(
+				page = './pages/ai.html',
+				name = 'AI',
+				hover_color = 'bg-red-200',
+				image = '/res/ai.png',
+				delay = ' ' + counter + 'ms'
+				)}}
+
+				{{counter = counter + 100}}
+
+				{{@ panel(
+				page = './pages/software.html',
+				name = 'Software & Algorithms',
+				hover_color = 'bg-green-600',
+				image = '/res/code.png',
+				delay = ' ' + counter + 'ms'
+				)}}
+
+				{{counter = counter + 100}}
+
+				{{@ panel(
+				page = './pages/about.html',
+				name = 'About',
+				hover_color = 'bg-green-600',
+				image = '/res/tom.jpg',
+				delay = ' ' + counter + 'ms'
+				)}}
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

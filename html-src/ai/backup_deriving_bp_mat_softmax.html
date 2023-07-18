@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css-dist/output.css" rel="stylesheet">
+	<link href="/css-common/styles.css" rel="stylesheet">
+	<title>Roy Varon</title>
+</head>
+
+<body class="body-color">
+
+	<div class="article-container">
+		{{@ page_navigation(name = 'AI', back = '../pages/ai.html')}}
+
+		<div style="animation-delay: 100ms;" class="fade-in-delay my-10 mx-auto justify-center items-center">
+			<p class="article-title-no-link">Deriving the Back Propagation of the Softmax Function in Matrix Form</p>
+
+			<!-- Introduction -->
+			<div class="article-paragraph-title">
+				Introduction
+			</div>
+
+			<div class="article-paragraph">
+				Softmax is a very common function in machine learning. It takes a set of real numbers, and converts them
+				to a probability distribution.
+				\[ \sigma(v)_i = \frac{e^{v_i}}{\sum e^{v_j}} \]
+				This article shows how the chain rule can be applied to propagate back derivatives though this function.
+			</div>
+
+			<div class="article-math-block">
+				{{math_itex('\sigma(v)_i = \frac{e^{v_i}}{\sum e^{v_j}}')}}
+			</div>
+
+			<div class="article-paragraph">
+				This article shows how the chain rule can be applied to propagate back derivatives though this function.
+			</div>
+
+			<!-- Forward Propagation -->
+			<div class="article-paragraph-title">
+				Forward Propagation
+			</div>
+
+			<div class="article-paragraph">
+				Consider the following vectors:
+			</div>
+
+			<div class="article-math-block">
+				{{math_itex('v^1 \in \mathbb{R}^n')}}
+				{{math_itex('v^2 \in \mathbb{R}^n')}}
+			</div>
+
+			<div class="article-paragraph">
+				Which are related using the softmax function:
+			</div>
+
+			<div class="article-paragraph">
+				{{math_itex('' v^2_i = \sigma(v^1)_i = \frac{ \exp {v^1_i}}{\sum_{k=0}^{n} \exp{v^1_k} } '')}}
+			</div>
+
+			<div class="article-paragraph">
+				An important observation is that unlike other common functions in machine learning like
+				{{math(''tanh'')}}, every
+				element in {{math(''v^1'')}} is dependent on every element in {{math(''v^2'')}}.
+			</div>
+
+			<!-- Back Propagation -->
+			<div class="article-paragraph-title">
+				Back Propagation
+			</div>
+
+			<div class="article-paragraph">
+				Let the derivative of every element of {{math(''v^2'')}} with respect to some function {{math(''L'')}}
+				be given.
+			</div>
+
+			<div class="article-math-block">
+				{{math_itex(''\frac{\partial L}{\partial v^2}'')}}
+				{{math_itex(''\frac{\partial L}{\partial v^2_j} = \Big(\frac{\partial L}{\partial v^2}\Big)_j'')}}
+			</div>
+
+			<div class="article-paragraph">
+				Our goal is to find the derivative of {{math(''L'')}} with respect to {{math(''v^1_i'')}}. However,
+				since all element in
+				both
+				vectors
+				are related to each other, we need to consider every possible path from {{math(''v^1_i'')}} to
+				{{math(''L'')}} and then sum
+				up
+				the derivatives.
+			</div>
+
+			<div class="article-math-block">
+				{{math_itex(''\frac{\partial L}{\partial v^1_i} = \sum_{j = 0}^{n} \frac{\partial L}{\partial v^2_j}
+				\frac{\partial
+				v^2_j}{\partial v^1_i} '')}}
+			</div>
+
+			<div class="article-paragraph">
+				Since {{math('' \partial L / \partial v^2_j'')}} are given, we only need to calculate {{math('' \partial
+				v^2_j / \partial
+				v^1_i'')}}. There are two cases
+				that need to be considered:
+			</div>
+
+			<div class="article-math-block">
+				{{math_itex(''i = j:'')}}
+			</div>
+			<div class="article-math-block">
+				{{math_itex(''\frac{\partial v^2_j}{\partial v^1_i} = \frac{\partial v^2_i}{\partial v^1_i}'')}}
+				{{math_itex(''= \frac{\partial}{\partial v^1_i}\Big( \frac{ \exp {v^1_i}} {\sum_{k=0}^{n} \exp{v^1_k} }
+				\Big) '')}}
+				{{math_itex(''= \frac{ \exp {v^1_i} \sum_{k=0}^{n} \exp{v^1_k} - \exp {v^1_i} \exp {v^1_i}}
+				{(\sum_{k=0}^{n}
+				\exp{v^1_k})^2} '')}}
+				{{math_itex(''= \exp {v^1_i} \frac{ \sum_{k=0}^{n} \exp{v^1_k} - \exp {v^1_i}} {(\sum_{k=0}^{n}
+				\exp{v^1_k})^2} '')}}
+				{{math_itex(''= \frac{\exp{v^1_i}}{\sum_{k=0}^{n} \exp{v^1_k}} \frac{ \sum_{k=0}^{n} \exp{v^1_k} - \exp
+				{v^1_i}}
+				{\sum_{k=0}^{n} \exp{v^1_k}} '')}}
+				{{math_itex(''= \frac{\exp{v^1_i}}{\sum_{k=0}^{n} \exp{v^1_k}} \Big(1-\frac{\exp {v^1_i}}
+				{\sum_{k=0}^{n}
+				\exp{v^1_k}}\Big)'')}}
+				{{math_itex(''let \; \sigma_i = \sigma(v^1)_i = \frac{\exp{v^1_i}}{\sum_{k=0}^{n} \exp{v^1_k}}'')}}
+				{{math_itex(''then: \; \frac{\partial v^2_i}{\partial v^1_i} = \sigma_i(1-\sigma_i)'')}}
+			</div>
+
+			<div class="article-math-block">
+				{{math_itex(''i \ne j:'')}}
+			</div>
+
+			<div class="article-math-block">
+				{{math_itex(''\frac{\partial v^2_j}{\partial v^1_i} '')}}
+				{{math_itex(''= \frac{\partial}{\partial v^1_i}\Big( \frac{ \exp {v^1_j}} {\sum_{k=0}^{n} \exp{v^1_k} }
+				\Big) '')}}
+				{{math_itex(''= \frac{ 0 - \exp{v^1_j}\exp{v^1_i}} {(\sum_{k=0}^{n} \exp{v^1_k})^2} '')}}
+				{{math_itex(''= -\frac{\exp{v^1_j}}{\sum_{k=0}^{n} \exp{v^1_k}} \frac{\exp{v^1_i}} {\sum_{k=0}^{n}
+				\exp{v^1_k}} '')}}
+				{{math_itex(''= -\sigma_j \sigma_i '')}}
+			</div>
+
+			<div class="article-paragraph">
+				To summarize:
+			</div>
+
+			<div class="article-math-block">
+				<math class="math-block" xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					<msub>
+						<mi>Q</mi>
+						<mrow data-mjx-texclass="ORD">
+							<mi>i</mi>
+							<mo>,</mo>
+							<mi>j</mi>
+						</mrow>
+					</msub>
+					<mo>=</mo>
+					<mrow data-mjx-texclass="INNER">
+						<mo data-mjx-texclass="OPEN">{</mo>
+						<mtable columnalign="left left" columnspacing="1em" rowspacing=".2em">
+							<mtr>
+								<mtd>
+									<msub>
+										<mi>&#x3C3;</mi>
+										<mi>i</mi>
+									</msub>
+									<mo stretchy="false">(</mo>
+									<mn>1</mn>
+									<mo>&#x2212;</mo>
+									<msub>
+										<mi>&#x3C3;</mi>
+										<mi>i</mi>
+									</msub>
+									<mo stretchy="false">)</mo>
+								</mtd>
+								<mtd></mtd>
+								<mtd>
+									<mi>i</mi>
+									<mo>=</mo>
+									<mi>j</mi>
+								</mtd>
+							</mtr>
+							<mtr>
+								<mtd>
+									<mo>&#x2212;</mo>
+									<msub>
+										<mi>&#x3C3;</mi>
+										<mi>j</mi>
+									</msub>
+									<msub>
+										<mi>&#x3C3;</mi>
+										<mi>i</mi>
+									</msub>
+								</mtd>
+								<mtd></mtd>
+								<mtd>
+									<mi>e</mi>
+									<mi>l</mi>
+									<mi>s</mi>
+									<mi>e</mi>
+								</mtd>
+							</mtr>
+						</mtable>
+						<mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo>
+					</mrow>
+				</math>
+			</div>
+
+			<div class="article-paragraph">
+				Where
+			</div>
+
+			<div class="article-math-block">
+				{{math_itex('' \sigma_i=\frac{\exp{v^1_i}} {\sum_{k=0}^{n} \exp{v^1_k}} '')}}
+			</div>
+
+			<div class="article-paragraph">
+				Now, notice that the above equation for the total derivative, can be written as matrix multiplication:
+			</div>
+
+			<div class="article-math-block">
+				{{math_itex(''\frac{\partial L}{\partial v^1_i} = \sum_{j = 0}^{n} \frac{\partial L}{\partial v^2_j}
+				\frac{\partial
+				v^2_j}{\partial v^1_i} = \sum_{j = 0}^{n} \frac{\partial L}{\partial v^2_j} Q_{i, j} '')}}
+			</div>
+
+			<div class="article-paragraph">
+				Such that:
+			</div>
+
+			<div class="article-math-block">
+				{{math_itex(''\frac{\partial L}{\partial v^1} = Q\frac{\partial L}{\partial v^2} '')}}
+				<math class="math-block" xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					<msub>
+						<mi>Q</mi>
+						<mrow data-mjx-texclass="ORD">
+							<mi>i</mi>
+							<mo>,</mo>
+							<mi>j</mi>
+						</mrow>
+					</msub>
+					<mo>=</mo>
+					<mrow data-mjx-texclass="INNER">
+						<mo data-mjx-texclass="OPEN">{</mo>
+						<mtable columnalign="left left" columnspacing="1em" rowspacing=".2em">
+							<mtr>
+								<mtd>
+									<msub>
+										<mi>&#x3C3;</mi>
+										<mi>i</mi>
+									</msub>
+									<mo stretchy="false">(</mo>
+									<mn>1</mn>
+									<mo>&#x2212;</mo>
+									<msub>
+										<mi>&#x3C3;</mi>
+										<mi>i</mi>
+									</msub>
+									<mo stretchy="false">)</mo>
+								</mtd>
+								<mtd></mtd>
+								<mtd>
+									<mi>i</mi>
+									<mo>=</mo>
+									<mi>j</mi>
+								</mtd>
+							</mtr>
+							<mtr>
+								<mtd>
+									<mo>&#x2212;</mo>
+									<msub>
+										<mi>&#x3C3;</mi>
+										<mi>j</mi>
+									</msub>
+									<msub>
+										<mi>&#x3C3;</mi>
+										<mi>i</mi>
+									</msub>
+								</mtd>
+								<mtd></mtd>
+								<mtd>
+									<mi>e</mi>
+									<mi>l</mi>
+									<mi>s</mi>
+									<mi>e</mi>
+								</mtd>
+							</mtr>
+						</mtable>
+						<mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo>
+					</mrow>
+				</math>
+			</div>
+
+			<div class="article-paragraph">
+				Notice that this matrix is symmetric {{math(''Q_{i, j} = Q_{j, i}'')}}. This fact can be used to boost
+				performance.
+			</div>
+		</div>
+	</div>
+
+	<!-- mathjax -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+
+</html>

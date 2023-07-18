@@ -1,0 +1,10 @@
+<pre class="article-paragraph-code">
+<code class="language-python">
+def q(x):
+	return sign(x) * sqrt(abs(x))
+
+mse(
+	q(label_obj_boxes[..., 3: 5]),
+	q(pred_obj_boxes_max[..., 3: 5])
+)
+</code></pre>

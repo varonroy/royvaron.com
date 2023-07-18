@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css-dist/output.css" rel="stylesheet">
+	<link href="/css-common/styles.css" rel="stylesheet">
+	<title>Roy Varon</title>
+</head>
+
+<body class="body-color">
+
+	<div class="container m-10 mx-auto">
+		<div class="mx-auto w-8/12 xl:w-7/12">
+			{{@ page_navigation}}
+
+			<p class="article-title-no-link text-center fade-in-delay">AI</p>
+
+			{{counter = 0}}
+
+			<!-- {{@ article_card(
+			title = 'Semi supervised object detection and classification',
+			secondary_title = 'Article',
+			image = '/res/semi_supervised_ob_oc/semi_supervised_ob_oc.png',
+			link = '../ai/semi_supervised_object_detection_classification.html',
+			delay = ' ' + counter + 'ms'
+			)}} -->
+
+			{{counter = counter + 100}}
+
+			{{@ article_card(
+			title = 'Exploring Object Detection',
+			secondary_title = 'Article',
+			image = '/res/exploring_object_detection/exploring_object_detection.png',
+			link = '../ai/exploring_object_detection.html',
+			delay = ' ' + counter + 'ms'
+			)}}
+
+			{{counter = counter + 100}}
+
+			{{@ article_card(
+			title = 'Deriving softmax back propagation in matrix form',
+			secondary_title = 'Article',
+			image = '/res/bp_mat_soft/bp_mat_soft.png',
+			link = '../ai/deriving_bp_mat_softmax.html',
+			delay = ' ' + counter + 'ms'
+			)}}
+
+			{{counter = counter + 100}}
+
+			{{@ article_card(
+			title = 'Deriving back propagation in matrix form',
+			secondary_title = 'Article',
+			image = '/res/bp_mat/bp_mat.png',
+			link = '../ai/deriving_bp_mat.html',
+			delay = ' ' + counter + 'ms'
+			)}}
+		</div>
+
+	</div>
+
+</body>
+
+</html>

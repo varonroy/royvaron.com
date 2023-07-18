@@ -1,0 +1,69 @@
+precision highp float;
+
+// constants
+float COS_30 = sqrt(3.0) / 2.0;
+
+// varying
+varying vec2 uv;
+varying vec2 screenSize;
+
+// colors
+vec3 bgColor = vec3(0.2);
+vec3 gridColor1 = vec3(0.8, 0.5, 0.5);
+vec3 gridColor2 = vec3(0.8, 0.8, 0.5);
+vec3 gridColor3 = vec3(0.8, 0.5, 0.8);
+vec3 gridColor4 = vec3(0.8, 0.8, 0.8);
+
+// camera
+vec2 cameraPos = vec2(0.0);
+float cameraWidth = 2.0;
+vec2 cameraSize = vec2(0.0);
+
+// grid
+vec2 gridCenter = vec2(0.0);
+vec2 gridSize = vec2(1.0);
+float hexR = 0.1;
+float hexW = COS_30 * hexR;
+
+float inHex(vec2 p) {
+	p = abs(p);
+
+	float targetHeight = hexR + (hexR / 2.0 - hexR) / hexW * p.x;
+
+	float underLine = 1.0 - step(targetHeight, p.y);
+
+	return underLine * (1.0 - step(hexW, p.x));
+}
+
+
+void main(void) {
+	// match the camera's aspect ratio to the canvas's
+	float cameraHeight = cameraWidth * screenSize.y / screenSize.x;
+	cameraSize = vec2(cameraWidth, cameraHeight);
+
+	// transform the uv coordinates to the to the camera's coordinates
+	// (cx - cw / 2, cy - ch / 2) to (cx + cw / 2, cy + ch / 2)
+	// now, each point on the screen will the the 'world' coordinate
+	vec2 p = (uv - 0.5) * cameraSize + cameraPos;
+
+	vec3 col = vec3(0.0);
+
+	p.y = mod(p.y, hexR * 3.0);
+
+	// gird of colors 1 and 2
+	vec2 p1 = p;
+	p1.x = mod(p1.x, hexW * 4.0);
+	col +=
+		gridColor1 * inHex(p1 - vec2(hexW * 1.0, hexR)) +
+		gridColor2 * inHex(p1 - vec2(hexW * 3.0, hexR));
+	
+	// gird of colors 3 and 4
+	vec2 p2 = p - vec2(hexW, hexR * 1.5);
+	p2.x = mod(p2.x, hexW * 4.0);
+	col +=
+		gridColor3 * inHex(p2 - vec2(hexW * 1.0, hexR)) +
+		gridColor4 * inHex(p2 - vec2(hexW * 3.0, hexR));
+
+	// output to screen
+	gl_FragColor = vec4(col, 1.0);
+}

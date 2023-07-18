@@ -1,0 +1,14 @@
+{{@ canvas(id = id)}}
+
+<script>
+	init(
+		// canvas id
+		'{{id}}',
+
+		// vertex shader
+		'{{remove_newline(vert)}}',
+
+		// fragment shader
+		'{{remove_newline(frag)}}',
+	)
+</script>

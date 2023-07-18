@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css-dist/output.css" rel="stylesheet">
+	<link href="/css-common/styles.css" rel="stylesheet">
+	<title>Roy Varon</title>
+</head>
+
+<body class="body-color">
+
+	<div class="container m-10 mx-auto">
+
+		<div class="mx-auto w-8/12 xl:w-7/12">
+			{{@ page_navigation}}
+
+			<p class="article-title-no-link text-center fade-in-delay">Software & Algorithms</p>
+
+			{{counter = 100}}
+
+			{{@ article_card(
+			title = 'GLSL Grids',
+			secondary_title = 'Fragment shaders that draw grids',
+			image = '/res/glsl-grids/glsl-grids.png',
+			link = '../software/glsl_grids.html',
+			delay = ' ' + counter + 'ms'
+			)}}
+
+			{{counter = counter + 100}}
+
+			{{@ article_card(
+			title = 'Circuit-Sim',
+			secondary_title = 'Circuit simulation of linear components',
+			image = '/res/circuit-sim/circuit-sim.png',
+			link = '../software/circuit_sim.html',
+			delay = ' ' + counter + 'ms'
+			)}}
+
+			{{counter = counter + 100}}
+
+			{{@ article_card(
+			title = 'KVON',
+			secondary_title = 'Human readable data serialization format',
+			image = '/res/kvon/kvon.png',
+			link = 'https://kvon.org',
+			delay = ' ' + counter + 'ms'
+			)}}
+
+			{{counter = counter + 100}}
+
+			{{@ article_card(
+			title = 'MB - rs / js',
+			secondary_title = 'Static website generator - javascript and rust',
+			image = '/res/mb/mb.png',
+			link = 'https://github.com/Cringere/mini-builder-rs',
+			delay = ' ' + counter + 'ms'
+			)}}
+
+			{{counter = counter + 100}}
+
+			{{@ article_card(
+			title = '3d Spirograph Surfaces',
+			secondary_title = 'Generating 3d spirographs and approximating the resulting surfaces',
+			image = '/res/spiro/spiro_3d_02.png',
+			link = 'https://github.com/Cringere/spirograph_3d_surfaces',
+			delay = ' ' + counter + 'ms'
+			)}}
+		</div>
+
+	</div>
+
+
+</body>
+
+</html>
