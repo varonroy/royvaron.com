@@ -75,6 +75,14 @@
 	@apply font-mono text-2xl;
 }
 
+.article-subtitle {
+	@apply font-mono text-xl text-gray-800;
+}
+
+.article-subtitle-link {
+	@apply font-mono text-lg text-link;
+}
+
 .error-title {
 	@apply font-mono text-4xl m-5 text-gray-800;
 }
