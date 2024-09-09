@@ -4,3 +4,6 @@ package-lock.json
 node_modules/
 html-generated/
 css-dist/
+
+.astro
+dist/

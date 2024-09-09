@@ -1,15 +1,27 @@
 {
   "name": "royvaron.com",
-  "version": "1.0.0",
-  "description": "My personal website",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "watch": "pnpm tailwindcss -i ./css-src/input.css -o ./css-dist/output.css --watch",
-    "build-css": "pnpm tailwindcss -i ./css-src/input.css -o ./css-dist/output.css --minify"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "@astrojs/check": "^0.9.3",
+    "@astrojs/mdx": "^3.1.5",
+    "@astrojs/tailwind": "^5.1.0",
+    "@tailwindcss/typography": "^0.5.15",
+    "astro": "^4.15.4",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4"
+  },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.4",
-    "tailwindcss": "^3.1.8"
+    "prettier-plugin-astro": "^0.14.1",
+    "sharp": "^0.33.5"
   }
 }

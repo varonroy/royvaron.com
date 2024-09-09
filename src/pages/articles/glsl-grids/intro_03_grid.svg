@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256mm"
+   height="256mm"
+   viewBox="0 0 256 256"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="intro_03_grid.svg"
+   inkscape:export-filename="intro_03_grid.png"
+   inkscape:export-xdpi="29.765625"
+   inkscape:export-ydpi="29.765625"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="0.37148569"
+     inkscape:cx="646.0545"
+     inkscape:cy="487.23277"
+     inkscape:window-width="1313"
+     inkscape:window-height="1013"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <sodipodi:guide
+       position="0,235.99999"
+       orientation="0,1"
+       id="guide788"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="0,19.999999"
+       orientation="0,1"
+       id="guide790"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="19.999999,255.99999"
+       orientation="-1,0"
+       id="guide792"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="235.99999,255.99999"
+       orientation="-1,0"
+       id="guide794"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="0,128"
+       orientation="0,1"
+       id="guide2526"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="128,255.99999"
+       orientation="-1,0"
+       id="guide3254"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="29.999999,255.99999"
+       orientation="-1,0"
+       id="guide4355"
+       inkscape:label=""
+       inkscape:locked="false"
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="0,29.999999"
+       orientation="0,1"
+       id="guide5446"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="225.99999,255.99999"
+       orientation="-1,0"
+       id="guide6174"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="0,225.99999"
+       orientation="0,1"
+       id="guide7630"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.8;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke:#000000;stroke-opacity:1"
+       id="rect796"
+       width="215.99998"
+       height="215.99998"
+       x="20"
+       y="20.000002" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:16.9333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-opacity:1"
+       x="142.38846"
+       y="18.080544"
+       id="text906"><tspan
+         sodipodi:role="line"
+         id="tspan904"
+         style="font-size:16.9333px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
+         x="142.38846"
+         y="18.080544">(gx + gw / 2,</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:16.9333px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
+         x="142.38846"
+         y="39.247169"
+         id="tspan10035"> gy - gh / 2)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:22.5778px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-opacity:1"
+       x="330.49213"
+       y="284.14819"
+       id="text9965"><tspan
+         sodipodi:role="line"
+         id="tspan9963"
+         style="font-size:22.5778px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
+         x="330.49213"
+         y="284.14819">(cx, cy)</tspan></text>
+    <circle
+       style="opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.20577;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-opacity:1"
+       id="path10019"
+       cx="324"
+       cy="260.63239"
+       r="7.3952436" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:16.9333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-opacity:1"
+       x="24.179161"
+       y="210.29425"
+       id="text10033"><tspan
+         sodipodi:role="line"
+         id="tspan10031"
+         style="font-size:16.9333px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
+         x="24.179161"
+         y="210.29425">(gx - gw / 2,</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:16.9333px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
+         x="24.179161"
+         y="231.46088"
+         id="tspan10037"> gy - gh / 2)</tspan></text>
+    <rect
+       style="opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-opacity:1"
+       id="rect12344"
+       width="95.950897"
+       height="135.61763"
+       x="111.52647"
+       y="54.398457" />
+    <circle
+       style="opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.20577;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-opacity:1"
+       id="circle28161"
+       cx="207.47736"
+       cy="54.398457"
+       r="7.3952436" />
+    <circle
+       style="opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.20577;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-opacity:1"
+       id="circle28163"
+       cx="111.52647"
+       cy="190.01608"
+       r="7.3952436" />
+  </g>
+</svg>

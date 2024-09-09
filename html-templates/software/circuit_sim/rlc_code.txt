@@ -1,8 +1,0 @@
-Circuit circuit;
-
-Resistor* r = circuit.R(4);
-Capacitor* c = circuit.C(2);
-Inductor* l = circuit.L(1);
-VoltageSource* vs = circuit.V(10);
-
-vs->connect(r)->connect(l)->connect(c)->connect(vs);

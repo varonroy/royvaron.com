@@ -1,0 +1,14 @@
+precision highp float;
+
+uniform vec2 s;
+
+attribute vec2 p;
+
+varying vec2 uv;
+varying vec2 screenSize;
+
+void main(void) {
+	uv = p * 0.5 + 0.5;
+	screenSize = s;
+	gl_Position = vec4(p, 0.0, 1.0);
+}

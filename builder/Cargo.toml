@@ -1,9 +1,0 @@
-[package]
-name = "builder"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-mini-builder-rs = "0.1.3"
-latex2mathml = "0.2.3"
-itex2mml = "0.2.0"

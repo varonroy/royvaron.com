@@ -1,0 +1,64 @@
+---
+import Navigation from "../components/Navigation.astro";
+import ArticleCard, {
+  type Props as ArticleCardProps,
+} from "../components/articleCard.astro";
+import { globals, type Category } from "../components/Globals.astro";
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+
+const mdFiles = await Astro.glob("../pages/articles/**/*.md");
+const mdxFiles = await Astro.glob("../pages/articles/**/*.mdx");
+
+const articles = [...mdFiles, ...mdxFiles]
+  .map((entry) => {
+    const key = entry!
+      .file!.split("/")!
+      .pop()!
+      .replace(/\.mdx?$/, ""); // Extract key without `.md`
+    const directory = entry.file.split("/").slice(0, -1).join("/"); // Extract directory path
+    return {
+      key,
+      directory,
+      file: entry.file,
+      frontmatter: entry.frontmatter,
+    };
+  })
+  .filter((entry) => entry.frontmatter.category == frontmatter.category)
+  .sort((a, b) => {
+    const [dayA, monthA, yearA] = a.frontmatter.date.split("/").map(Number);
+    const [dayB, monthB, yearB] = b.frontmatter.date.split("/").map(Number);
+    const dateA = new Date(yearA, monthA - 1, dayA); // Convert to Date object
+    const dateB = new Date(yearB, monthB - 1, dayB);
+
+    //@ts-ignore
+    return dateB - dateA;
+  });
+---
+
+<Layout title="Roy Varon">
+  <div class="container m-10 mx-auto">
+    <div class="mx-auto w-8/12 xl:w-7/12">
+      <Navigation />
+
+      <p class="article-title-no-link text-center fade-in-delay">
+        {frontmatter.title}
+      </p>
+      {
+        articles.map((article, idx) => (
+          <ArticleCard
+            title={article.frontmatter.title}
+            secondary_title={article.frontmatter.sub_title}
+            link={
+              article.frontmatter.external_link ||
+              `/articles/${article.key}/${article.key}`
+            }
+            imagePath={`${article.directory}/icon.png`}
+            delay={` ${globals.initialDelay + idx * globals.delay}ms`}
+          />
+        ))
+      }
+    </div>
+  </div>
+</Layout>

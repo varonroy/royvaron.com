@@ -1,0 +1,33 @@
+---
+import MyCanvas from "./MyCanvas.astro";
+
+// @ts-ignore
+import fs from "node:fs/promises";
+
+const { vert, frag } = Astro.props;
+
+const canvas_id = `${vert}-${frag}`;
+
+async function readFile(path: string) {
+  console.log("LOADING ");
+  console.log(path);
+
+  try {
+    return await fs.readFile(new URL(path, import.meta.url), "utf-8");
+  } catch {
+    return undefined;
+  }
+}
+
+const vertContenet = await readFile(`./${vert}.txt`);
+const fragContenet = await readFile(`./${frag}.txt`);
+---
+
+<MyCanvas id={canvas_id} />
+
+<code><pre>{fragContenet}</pre></code>
+
+<script lang="js" define:vars={{ canvas_id, vertContenet, fragContenet }}>
+  if (vertContenet !== undefined && fragContenet !== undefined)
+    init(canvas_id, vertContenet, fragContenet);
+</script>
