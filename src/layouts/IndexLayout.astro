@@ -1,34 +1,38 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "./Layout.astro";
 import Panel from "../components/Panel.astro";
 
-import Ai from "../res/ai.png";
-import Code from "../res/code.png";
-import Tom from "../res/tom.jpg";
+import Ai from "../res/panels/ai.png";
+import Code from "../res/panels/code.png";
+import Tom from "../res/panels/tom.jpg";
+
 import { globals } from "../components/Globals.astro";
 
-const panels = [];
+const { frontmatter } = Astro.props;
 
-panels.push(
-  {
-    page: "./ai",
-    name: "AI",
-    hover_color: "bg-red-200",
-    image: Ai,
-  },
-  {
-    page: "./software",
-    name: "Software & Algorithms",
-    hover_color: "bg-green-600",
-    image: Code,
-  },
-  {
-    page: "./about",
-    name: "About",
-    hover_color: "bg-green-600",
-    image: Tom,
-  }
-);
+console.log(frontmatter);
+
+const panelFiles = [
+  ...(await Astro.glob("../res/panels/*.png")),
+  ...(await Astro.glob("../res/panels/*.jpg")),
+];
+
+const panelMds = await Astro.glob("../pages/panels/*.md");
+
+function findPanelImage(name: string) {
+  return panelFiles.filter((panel) => panel.default.src.includes(name))[0]
+    .default;
+}
+
+function findPanel(name: string) {
+  return panelMds.filter((panel) => panel.frontmatter.id.includes(name))[0];
+}
+
+const panels = frontmatter.panels.map(findPanel).map((panel: any) => ({
+  page: panel.frontmatter.page,
+  name: panel.frontmatter.name,
+  image: findPanelImage(panel.frontmatter.image),
+}));
 ---
 
 <Layout title="Roy Varon">
@@ -61,7 +65,7 @@ panels.push(
 
       <div class="flex flex-col lg:flex-row justify-center">
         {
-          panels.map((panel, idx) => (
+          panels.map((panel: any, idx: number) => (
             <Panel
               {...panel}
               delay={` ${globals.initialDelay + idx * globals.delay}ms`}

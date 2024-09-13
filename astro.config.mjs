@@ -10,6 +10,10 @@ import remarkMath from "remark-math";
 // https://r3zz.io/posts/astro-blog-latex/
 import rehypeKatex from "rehype-katex";
 
+// https://www.npmjs.com/package/rehype-mathjax
+// https://github.com/remarkjs/remark-math?tab=readme-ov-file#example-mathjax
+// import rehypeMathjax from "rehype-mathjax";
+
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
@@ -19,5 +23,6 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
+    // rehypePlugins: [rehypeMathjax],
   },
 });

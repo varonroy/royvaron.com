@@ -29,9 +29,13 @@ const { frontmatter } = Astro.props;
         <a href={`mailto:${frontmatter.email}`} class="article-subtitle-link"
           >{frontmatter.email}</a
         >
-        <p class="article-subtitle text-gray-500">
-          {frontmatter.date} (dd/mm/yyyy)
-        </p>
+        {
+          frontmatter.date && (
+            <p class="article-subtitle text-gray-500">
+              {frontmatter.date} (dd/mm/yyyy)
+            </p>
+          )
+        }
 
         <div
           class="prose dark:prose-invert fade-in-delay article-sub-container"

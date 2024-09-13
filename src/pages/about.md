@@ -2,11 +2,11 @@
 layout: "../layouts/ArticleLayout.astro"
 title: About
 category: about
-date: 09/09/2024
+# date: 09/09/2024
 back: /
 ---
 
-## Me
+## Myself
 
 My name is Roy Varon Weinryb. I am a software developer who focuses on AI and ML. In this website I showcase some of my projects and some articles that I wrote. My main languages are Rust, Python, Java and C/C++.
 
