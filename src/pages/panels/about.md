@@ -2,5 +2,5 @@
 page: ./about
 id: about
 name: About
-image: tom.jpg
+image: tom
 ---

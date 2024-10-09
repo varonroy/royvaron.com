@@ -2,77 +2,78 @@
 import Layout from "./Layout.astro";
 import Panel from "../components/Panel.astro";
 
-import Ai from "../res/panels/ai.png";
-import Code from "../res/panels/code.png";
-import Tom from "../res/panels/tom.jpg";
+// import Ai from "../res/panels/ai.png";
+// import Code from "../res/panels/code.png";
+// import Tom from "../res/panels/tom.jpg";
 
 import { globals } from "../components/Globals.astro";
 
 const { frontmatter } = Astro.props;
 
-console.log(frontmatter);
-
 const panelFiles = [
-  ...(await Astro.glob("../res/panels/*.png")),
-  ...(await Astro.glob("../res/panels/*.jpg")),
+    ...(await Astro.glob("../res/panels/*.png")),
+    ...(await Astro.glob("../res/panels/*.jpg")),
 ];
 
 const panelMds = await Astro.glob("../pages/panels/*.md");
 
 function findPanelImage(name: string) {
-  return panelFiles.filter((panel) => panel.default.src.includes(name))[0]
-    .default;
+    return panelFiles.filter((panel) => panel.default.src.includes(name))[0]
+        .default;
 }
 
 function findPanel(name: string) {
-  return panelMds.filter((panel) => panel.frontmatter.id.includes(name))[0];
+    return panelMds.filter((panel) => panel.frontmatter.id.includes(name))[0];
 }
 
 const panels = frontmatter.panels.map(findPanel).map((panel: any) => ({
-  page: panel.frontmatter.page,
-  name: panel.frontmatter.name,
-  image: findPanelImage(panel.frontmatter.image),
+    page: panel.frontmatter.page,
+    name: panel.frontmatter.name,
+    image: findPanelImage(panel.frontmatter.image),
 }));
 ---
 
 <Layout title="Roy Varon">
-  <div style="z-index: -1;" class="index-bg flex justify-center absolute"></div>
-
-  <div class="flex h-screen py-10">
-    <div class="m-auto top-1/2 left-1/2">
-      <div class="main-page-text-group fade-in-delay">
-        <p class="main-page-title">Roy Varon Weinryb</p>
-        <div class="m-4">
-          <a href="mailto:varonroy@gmail.com" class="main-page-link"
-            >varonroy@gmail.com</a
-          >
-        </div>
-        <div class="m-4">
-          <a href="https://github.com/varonroy" class="main-page-link">github</a
-          >
-        </div>
-
-        <div class="m-4">
-          <a href="https://www.linkedin.com/feed/" class="main-page-link"
-            >linkedin</a
-          >
-        </div>
-
-        <div class="m-4">
-          <a href="/res/resume.pdf" class="main-page-link">resume</a>
-        </div>
-      </div>
-
-      <div class="flex flex-col lg:flex-row justify-center">
-        {
-          panels.map((panel: any, idx: number) => (
-            <Panel
-              {...panel}
-              delay={` ${globals.initialDelay + idx * globals.delay}ms`}
-            />
-          ))
-        }
-      </div>
+    <div style="z-index: -1;" class="index-bg flex justify-center absolute">
     </div>
-  </div>
+
+    <div class="flex h-screen py-10">
+        <div class="m-auto top-1/2 left-1/2">
+            <div class="main-page-text-group fade-in-delay">
+                <p class="main-page-title">Roy Varon Weinryb</p>
+                <div class="m-4">
+                    <a href="mailto:varonroy@gmail.com" class="main-page-link"
+                        >varonroy@gmail.com</a
+                    >
+                </div>
+                <div class="m-4">
+                    <a href="https://github.com/varonroy" class="main-page-link"
+                        >github</a
+                    >
+                </div>
+
+                <div class="m-4">
+                    <a
+                        href="https://www.linkedin.com/feed/"
+                        class="main-page-link">linkedin</a
+                    >
+                </div>
+
+                <div class="m-4">
+                    <a href="/res/resume.pdf" class="main-page-link">resume</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row justify-center">
+                {
+                    panels.map((panel: any, idx: number) => (
+                        <Panel
+                            {...panel}
+                            delay={` ${globals.initialDelay + idx * globals.delay}ms`}
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </div>
 </Layout>

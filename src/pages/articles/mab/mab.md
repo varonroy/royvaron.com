@@ -714,7 +714,7 @@ The regret of the successive elimination algorithm is bounded by $\mathcal{O}(\f
 
 ## The UCB Algorithm
 
-The UBC algorithm follows the following heuristic: "at each round, play the action that has the highest UCB". Or formally:
+The UCB algorithm follows the following heuristic: "at each round, play the action that has the highest UCB". Or formally:
 
 1. Try each action once.
 2. Repeat:
