@@ -127,6 +127,18 @@
   @apply article-content-text text-justify mb-5 mt-2 text-gray-800;
 }
 
+.prose li {
+  @apply article-content-text text-justify mb-5 mt-2 text-gray-800;
+}
+
+.prose blockquote p {
+  @apply article-content-text text-justify mb-5 mt-2 text-gray-800;
+}
+
+.prose blockquote ::before {
+  @apply article-content-text text-justify mb-5 mt-2 text-gray-800;
+}
+
 .prose pre {
   @apply text-left;
 }
